@@ -61,7 +61,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {/* Options Card */}
             <Link href="/options" className="group block">
               <div className="card-interactive h-full relative overflow-hidden">
@@ -138,6 +138,129 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center gap-2 text-sm font-semibold text-[#10b981] group-hover:text-[#34d399] group-hover:gap-3 transition-all">
+                  {t("Explore Research")}
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Risk Management Card */}
+            <Link href="/risk-management" className="group block">
+              <div className="card-interactive h-full relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #f59e0b, #fbbf24, transparent)" }} />
+
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="icon-container" style={{ background: "rgba(245,158,11,0.12)", color: "#f59e0b" }}>⛊</div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-[#fbbf24] group-hover:text-[#fcd34d] transition-colors">
+                      {t("Exchange Risk Management")}
+                    </h3>
+                    <p className="text-xs text-[var(--muted)] mt-0.5">{t("Portfolio Risk & Hedging")}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
+                  {t("Comprehensive risk quantification for exchanges offering perpetual futures — delta exposure, funding risk, liquidation cascades, basis risk, market impact, and hedge simulation with full backtesting.")}
+                </p>
+
+                <div className="grid grid-cols-1 gap-2 mb-6">
+                  {[
+                    t("Net delta tracking & directional risk"),
+                    t("VaR, CVaR & historical stress tests"),
+                    t("Liquidation cascade simulation"),
+                    t("Insurance fund sizing & sustainability"),
+                    t("Hedge backtest with execution costs"),
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
+                      <span className="w-1 h-1 rounded-full bg-[#f59e0b] flex-shrink-0" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#f59e0b] group-hover:text-[#fbbf24] group-hover:gap-3 transition-all">
+                  {t("Explore Research")}
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Options Risk Card */}
+            <Link href="/options-risk" className="group block">
+              <div className="card-interactive h-full relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #a855f7, #c084fc, transparent)" }} />
+
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="icon-container" style={{ background: "rgba(168,85,247,0.12)", color: "#a855f7" }}>⬡</div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-[#c084fc] group-hover:text-[#d8b4fe] transition-colors">
+                      {t("Options Risk Management")}
+                    </h3>
+                    <p className="text-xs text-[var(--muted)] mt-0.5">{t("Greeks, Hedging & Portfolio Risk")}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
+                  {t("Quantifying and hedging the exchange's risk from selling vanilla options — Greeks exposure, volatility surface risk, gamma hedging, and portfolio-level risk aggregation.")}
+                </p>
+
+                <div className="grid grid-cols-1 gap-2 mb-6">
+                  {[
+                    t("Greeks exposure (Delta, Gamma, Vega, Theta)"),
+                    t("Dynamic delta & gamma hedging"),
+                    t("Volatility surface & smile risk"),
+                    t("Portfolio-level risk aggregation"),
+                    t("Hedging P&L attribution"),
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
+                      <span className="w-1 h-1 rounded-full bg-[#a855f7] flex-shrink-0" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#a855f7] group-hover:text-[#c084fc] group-hover:gap-3 transition-all">
+                  {t("Explore Research")}
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </div>
+            </Link>
+
+            {/* Unified Risk Card */}
+            <Link href="/unified-risk" className="group block">
+              <div className="card-interactive h-full relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #ef4444, #f87171, transparent)" }} />
+
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="icon-container" style={{ background: "rgba(239,68,68,0.12)", color: "#ef4444" }}>⬢</div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-[#f87171] group-hover:text-[#fca5a5] transition-colors">
+                      {t("Unified Risk Engine")}
+                    </h3>
+                    <p className="text-xs text-[var(--muted)] mt-0.5">{t("Perps + Options Combined")}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
+                  {t("Combined risk management for perpetual futures and vanilla options — unified Greek exposure, cross-product netting, single hedge engine, and integrated stress testing.")}
+                </p>
+
+                <div className="grid grid-cols-1 gap-2 mb-6">
+                  {[
+                    t("Unified Greeks across perps + options"),
+                    t("Cross-product Delta netting"),
+                    t("Single DGV-neutral hedge engine"),
+                    t("Combined stress tests & VaR"),
+                    t("Per-product P&L decomposition"),
+                  ].map((f, i) => (
+                    <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
+                      <span className="w-1 h-1 rounded-full bg-[#ef4444] flex-shrink-0" />
+                      {f}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#ef4444] group-hover:text-[#f87171] group-hover:gap-3 transition-all">
                   {t("Explore Research")}
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </div>
@@ -233,6 +356,24 @@ export default function Home() {
               {t("Perpetual Futures")}
               <span>→</span>
             </Link>
+            <Link href="/risk-management"
+              className="btn-primary text-white"
+              style={{ background: "linear-gradient(135deg, #f59e0b, #d97706)" }}>
+              {t("Perps Risk")}
+              <span>→</span>
+            </Link>
+            <Link href="/options-risk"
+              className="btn-primary text-white"
+              style={{ background: "linear-gradient(135deg, #a855f7, #7c3aed)" }}>
+              {t("Options Risk")}
+              <span>→</span>
+            </Link>
+            <Link href="/unified-risk"
+              className="btn-primary text-white"
+              style={{ background: "linear-gradient(135deg, #ef4444, #dc2626)" }}>
+              {t("Unified Risk")}
+              <span>→</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -246,6 +387,9 @@ export default function Home() {
               <div className="flex flex-col gap-2">
                 <Link href="/options" className="text-xs">{t("Crypto Options Pricing")}</Link>
                 <Link href="/perpetuals" className="text-xs">{t("Perpetual Futures Analytics")}</Link>
+                <Link href="/risk-management" className="text-xs">{t("Exchange Risk Management")}</Link>
+                <Link href="/options-risk" className="text-xs">{t("Options Risk Management")}</Link>
+                <Link href="/unified-risk" className="text-xs">{t("Unified Risk Engine")}</Link>
               </div>
             </div>
             <div>

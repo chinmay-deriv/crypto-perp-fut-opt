@@ -605,7 +605,12 @@ def phase5_pricing(params: dict) -> dict:
     for t in range(1, n_steps + 1):
         z = np.random.standard_normal(N_PATHS)
         n_jumps = np.random.poisson(lam_dt_m, N_PATHS)
-        total_jump = np.random.normal(mp["mu_j"], mp["sigma_j"], N_PATHS) * n_jumps
+        z_jump = np.random.standard_normal(N_PATHS)
+        total_jump = np.where(
+            n_jumps > 0,
+            mp["mu_j"] * n_jumps + mp["sigma_j"] * np.sqrt(n_jumps.astype(np.float64)) * z_jump,
+            0.0,
+        )
         S_cur = S_cur * np.exp(drift_m + mp["sigma"] * sqrt_dt * z + total_jump)
         if t in step_to_mats:
             for ml in step_to_mats[t]:
@@ -623,7 +628,12 @@ def phase5_pricing(params: dict) -> dict:
         v_pos = np.maximum(v_bates, 0)
         sqrt_v = np.sqrt(v_pos)
         n_jumps = np.random.poisson(lam_dt_m, N_PATHS)
-        total_jump = np.random.normal(mp["mu_j"], mp["sigma_j"], N_PATHS) * n_jumps
+        z_jump = np.random.standard_normal(N_PATHS)
+        total_jump = np.where(
+            n_jumps > 0,
+            mp["mu_j"] * n_jumps + mp["sigma_j"] * np.sqrt(n_jumps.astype(np.float64)) * z_jump,
+            0.0,
+        )
         S_cur = S_cur * np.exp(
             (r - mp["lambda"] * mp["k"] - 0.5 * v_pos) * dt_sim
             + sqrt_v * sqrt_dt * z1 + total_jump)
