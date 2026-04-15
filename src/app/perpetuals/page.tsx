@@ -18,10 +18,10 @@ const SECTIONS = [
   { id: "markprice", label: "8. Mark Price" },
   { id: "risk", label: "9. VaR / CVaR" },
   { id: "liquidation", label: "10. Liquidation" },
-  { id: "seasonality", label: "11. Seasonality" },
-  { id: "autocorrelation", label: "12. ACF & Hurst" },
-  { id: "tailrisk", label: "13. Tail Risk" },
-  { id: "margin", label: "14. Margin Tiers" },
+  // { id: "seasonality", label: "11. Seasonality" },
+  // { id: "autocorrelation", label: "12. ACF & Hurst" },
+  // { id: "tailrisk", label: "13. Tail Risk" },
+  // { id: "margin", label: "14. Margin Tiers" },
 ];
 
 async function fetchJSON<T>(path: string): Promise<T | null> {
@@ -102,10 +102,10 @@ export default function PerpetualFutures() {
         <MarkPriceSection data={d.mark_price} />
         <RiskSection data={d.risk} />
         <LiquidationSection data={d.liquidation} />
-        <SeasonalitySection data={d.seasonality} />
+        {/* <SeasonalitySection data={d.seasonality} />
         <AutocorrelationSection data={d.autocorrelation} />
         <TailRiskSection data={d.tail_risk} />
-        <MarginSection data={d.margin} />
+        <MarginSection data={d.margin} /> */}
 
         <SummarySection />
 
@@ -534,6 +534,7 @@ function LiquidationSection({ data }: { data: any }) {
   );
 }
 
+/* --- Sections 11–14 commented out (kept for future use) ---
 function SeasonalitySection({ data }: { data: any }) {
   const { t } = useI18n();
   if (!data) return <section id="seasonality" className="mb-12"><Loader /></section>;
@@ -725,6 +726,7 @@ function MarginSection({ data }: { data: any }) {
     </section>
   );
 }
+--- End of Sections 11–14 */
 
 function SummarySection() {
   const { t } = useI18n();
