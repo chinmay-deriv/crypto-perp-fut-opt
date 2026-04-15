@@ -270,9 +270,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-gradient mx-6" />
+      {/* <div className="divider-gradient mx-6" />
 
-      {/* ════════════ CAPABILITIES GRID ════════════ */}
+      ════════════ CAPABILITIES GRID ════════════
       <section className="px-6 py-16 md:py-20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
@@ -299,7 +299,7 @@ export default function Home() {
 
       <div className="divider-gradient mx-6" />
 
-      {/* ════════════ DATA & METHODOLOGY BANNER ════════════ */}
+      ════════════ DATA & METHODOLOGY BANNER ════════════
       <section className="px-6 py-16 md:py-20">
         <div className="max-w-5xl mx-auto">
           <div className="relative rounded-2xl overflow-hidden" style={{ background: "linear-gradient(135deg, #0f1a2e 0%, #0a1628 50%, #0d1f1a 100%)" }}>
@@ -331,9 +331,9 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="divider-gradient mx-6" />
+      <div className="divider-gradient mx-6" /> */}
 
-      {/* ════════════ CTA ════════════ */}
+      {/* ════════════ CTA (commented out) ════════════
       <section className="px-6 py-16 md:py-20 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
@@ -378,7 +378,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════════ FOOTER ════════════ */}
+      ════════════ FOOTER ════════════
       <footer className="mt-auto border-t border-[var(--card-border)] bg-[var(--background-secondary)]">
         <div className="max-w-5xl mx-auto px-6 py-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 footer-section">
@@ -417,7 +417,7 @@ export default function Home() {
             <p className="text-xs text-[var(--muted)]">BTCUSDT · Binance · 2025</p>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

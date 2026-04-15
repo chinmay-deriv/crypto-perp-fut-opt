@@ -107,7 +107,7 @@ export default function PerpetualFutures() {
         <TailRiskSection data={d.tail_risk} />
         <MarginSection data={d.margin} /> */}
 
-        <SummarySection />
+        {/* <SummarySection /> */}
 
         <footer className="mt-12 pt-6 border-t border-[var(--card-border)] text-center text-xs text-[var(--muted)]">
           <p>{t("Perpetual Futures Research · Next.js + Plotly.js + Python")}</p>
