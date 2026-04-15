@@ -308,7 +308,7 @@ function OverviewSection({ data }: { data: any }) {
           color="var(--accent-amber)"
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="card" style={{ height: 360 }}>
           <PlotlyChart
             data={[
@@ -351,7 +351,7 @@ function OverviewSection({ data }: { data: any }) {
             }}
           />
         </div>
-      </div>
+      </div> */}
       <InsightBox>
         {t(
           `The portfolio is net long ${fmt(data.net_delta_btc, 1)} BTC ($${fmt(data.net_delta_usd)}), which means the exchange is effectively SHORT this amount. If BTC rises, the exchange loses money. This directional imbalance is the primary risk driver.`
@@ -405,26 +405,48 @@ function DeltaSection({ data }: { data: any }) {
           color={s.total_pnl >= 0 ? "var(--accent-green)" : RED}
         />
       </div>
-      <div className="card mb-4" style={{ height: 400 }}>
-        <PlotlyChart
-          data={[
-            {
-              x: data.dates,
-              y: data.net_delta_btc,
-              type: "scatter",
-              mode: "lines",
-              line: { width: 1.5, color: ACCENT_HEX },
-              name: "Net Delta (BTC)",
-              fill: "tozeroy",
-              fillcolor: "rgba(245,158,11,0.1)",
-            },
-          ]}
-          layout={{
-            title: "Net Delta Exposure Over Time",
-            yaxis: { title: "Net Delta (BTC)", zeroline: true },
-            xaxis: { title: "Date" },
-          }}
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div className="card lg:col-span-2" style={{ height: 400 }}>
+          <PlotlyChart
+            data={[
+              {
+                x: data.dates,
+                y: data.net_delta_btc,
+                type: "scatter",
+                mode: "lines",
+                line: { width: 1.5, color: ACCENT_HEX },
+                name: "Net Delta (BTC)",
+                fill: "tozeroy",
+                fillcolor: "rgba(245,158,11,0.1)",
+              },
+            ]}
+            layout={{
+              title: "Net Delta Exposure Over Time",
+              yaxis: { title: "Net Delta (BTC)", zeroline: true },
+              xaxis: { title: "Date" },
+            }}
+          />
+        </div>
+        <div className="card flex flex-col justify-center" style={{ height: 400 }}>
+          <h3 className="text-sm font-bold text-[var(--accent-amber)] mb-3">{t("How This Is Computed")}</h3>
+          <div className="space-y-3 text-xs text-[var(--muted-light)] leading-relaxed">
+            <p>
+              <span className="text-[var(--foreground)] font-semibold">Delta path</span> is modeled as an Ornstein-Uhlenbeck process with jumps, driven by real BTC returns:
+            </p>
+            <p className="font-mono text-[10px] text-[var(--accent)] bg-[#1e293b] rounded px-2 py-1.5">
+              δ(t+1) = δ(t) + κ(θ − δ(t)) + σ·Z + J + 400·r<sub>BTC</sub>
+            </p>
+            <p>
+              <span className="text-[var(--accent-amber)]">θ = 25 BTC</span> long-run mean (retail long bias), <span className="text-[var(--accent-amber)]">κ = 0.08</span> mean-reversion speed, <span className="text-[var(--accent-amber)]">σ = 12</span> daily noise, <span className="text-[var(--accent-amber)]">5%</span> daily jump probability.
+            </p>
+            <p>
+              <span className="text-[var(--foreground)] font-semibold">P&L</span> uses <span className="text-[var(--accent-green)]">real BTC daily closes</span> (Binance, Jan–Jun 2025): Exchange P&L = −δ(t) × ΔP.
+            </p>
+            <p className="text-[var(--muted)] italic">
+              Seeded (seed=123) for reproducibility. Delta is simulated; prices are real market data.
+            </p>
+          </div>
+        </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="card" style={{ height: 360 }}>
