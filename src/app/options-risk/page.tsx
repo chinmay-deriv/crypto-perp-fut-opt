@@ -14,12 +14,12 @@ const SECTIONS: { id: string; label: string }[] = [
   /* { id: "parity-check", label: "5. Put-Call Parity" }, */
   { id: "greeks-overview", label: "5. Greeks Calculator" },
   { id: "greeks-heatmaps", label: "6. Greeks vs Moneyness" },
-  { id: "smile-risk", label: "7. Smile-Risk Greeks" },
-  { id: "portfolio", label: "8. Portfolio Aggregation" },
-  { id: "hedging-strategies", label: "9. Hedging Strategies" },
-  { id: "hedge-engine", label: "10. Live Hedge Engine" },
-  { id: "dynamic-hedging", label: "11. Dynamic Hedging" },
-  { id: "stress-tests", label: "12. Stress Tests & VaR" },
+  /* { id: "smile-risk", label: "7. Smile-Risk Greeks" }, */
+  { id: "portfolio", label: "7. Portfolio Aggregation" },
+  { id: "hedging-strategies", label: "8. Hedging Strategies" },
+  { id: "hedge-engine", label: "9. Live Hedge Engine" },
+  { id: "dynamic-hedging", label: "10. Dynamic Hedging" },
+  { id: "stress-tests", label: "11. Stress Tests & VaR" },
 ];
 
 async function fetchJSON<T>(path: string): Promise<T | null> {
@@ -120,7 +120,7 @@ export default function OptionsRisk() {
         <div className="mt-auto pt-4 border-t border-[var(--card-border)]">
           <p className="text-[10px] text-[var(--muted)]">Options Risk Module</p>
           <p className="text-[10px] text-[var(--muted)]">
-            Sections 1–12 · Pricing, Greeks, Hedging
+            Sections 1–11 · Pricing, Greeks, Hedging
           </p>
         </div>
       </nav>
@@ -158,7 +158,7 @@ export default function OptionsRisk() {
         {/* <ParityCheckSection data={d.parity_check} /> */}
         <GreeksOverviewSection data={d.greeks_surface} />
         <GreeksHeatmapSection data={d.greeks_surface} />
-        <SmileRiskSection data={d.smile_risk} />
+        {/* <SmileRiskSection data={d.smile_risk} /> */}
         <PortfolioSection data={d.portfolio} />
         <HedgingStrategiesSection data={d.portfolio} />
         <HedgeEngineSection data={d.hedge_rebalance} />
@@ -1422,7 +1422,7 @@ function PortfolioSection({ data }: { data: any }) {
 
   return (
     <section id="portfolio" className="mb-12">
-      <STitle>{t("8. Portfolio Aggregation & Hedging")}</STitle>
+      <STitle>{t("7. Portfolio Aggregation & Hedging")}</STitle>
 
       <InfoBox title="From Single-Option Greeks to Portfolio Risk">
         <p className="mb-2">
@@ -1540,7 +1540,7 @@ function HedgingStrategiesSection({ data }: { data: any }) {
 
   return (
     <section id="hedging-strategies" className="mb-12">
-      <STitle>{t("9. Hedging Strategies — Making Δ, Γ, V → 0")}</STitle>
+      <STitle>{t("8. Hedging Strategies — Making Δ, Γ, V → 0")}</STitle>
 
       <InfoBox title="The Three Layers of Option Hedging">
         <p className="mb-2">
@@ -1647,7 +1647,7 @@ function HedgeEngineSection({ data }: { data: any }) {
 
   return (
     <section id="hedge-engine" className="mb-12">
-      <STitle>{t("10. Live Hedge Engine — Trade-by-Trade Rebalancing")}</STitle>
+      <STitle>{t("9. Live Hedge Engine — Trade-by-Trade Rebalancing")}</STitle>
 
       <InfoBox title="How the Hedge Engine Works in Real Time">
         <p className="mb-2">
@@ -1804,7 +1804,7 @@ function DynamicHedgingSection({ data }: { data: any }) {
 
   return (
     <section id="dynamic-hedging" className="mb-12">
-      <STitle>{t("11. Dynamic Hedging Simulation (14 Days)")}</STitle>
+      <STitle>{t("10. Dynamic Hedging Simulation (14 Days)")}</STitle>
 
       <InfoBox title="What This Simulation Shows">
         <p className="mb-2">
@@ -1945,7 +1945,7 @@ function StressTestsSection({ data }: { data: any }) {
 
   return (
     <section id="stress-tests" className="mb-12">
-      <STitle>{t("12. Stress Testing & Value at Risk")}</STitle>
+      <STitle>{t("11. Stress Testing & Value at Risk")}</STitle>
 
       <InfoBox title="Why Stress Test?">
         <p className="mb-2">
