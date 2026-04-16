@@ -79,7 +79,7 @@ function GarchTab({ data }: { data: any }) {
           ]}
           layout={{
             title: { text: "Conditional Volatility (Annualized %)", font: { size: 13 } },
-            yaxis: { title: "Vol (%)" }, showlegend: true,
+            xaxis: { title: "Date" }, yaxis: { title: "Vol (%)" }, showlegend: true,
           }}
         />
       </div>

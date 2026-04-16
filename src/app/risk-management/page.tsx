@@ -465,6 +465,7 @@ function DeltaSection({ data }: { data: any }) {
             ]}
             layout={{
               title: "Cumulative Exchange P&L (from Delta Exposure)",
+              xaxis: { title: "Date" },
               yaxis: { title: "P&L ($)" },
             }}
           />
@@ -785,6 +786,7 @@ function FundingRiskSection({ data }: { data: any }) {
             }))}
             layout={{
               title: "Cumulative Funding Cash Flow by Position Skew",
+              xaxis: { title: "Date" },
               yaxis: { title: "Cumulative Cash Flow (BTC)" },
               showlegend: true,
               legend: { x: 0, y: 1.15, orientation: "h" },
@@ -812,6 +814,7 @@ function FundingRiskSection({ data }: { data: any }) {
               ]}
               layout={{
                 title: "Funding Differential: Your Exchange vs Hedge Venue ($)",
+                xaxis: { title: "Date" },
                 yaxis: { title: "Cumulative Cost ($)" },
               }}
             />
@@ -1110,6 +1113,7 @@ function InsuranceSection({ data }: { data: any }) {
           ]}
           layout={{
             title: "Insurance Fund Balance Over Time (Backtest)",
+            xaxis: { title: "Date" },
             yaxis: { title: "Fund Balance ($)" },
             showlegend: true,
           }}
@@ -1188,6 +1192,7 @@ function BasisSection({ data }: { data: any }) {
             ]}
             layout={{
               title: "Basis Over Time (bps)",
+              xaxis: { title: "Date" },
               yaxis: { title: "Basis (bps)", zeroline: true },
             }}
           />
@@ -1226,6 +1231,7 @@ function BasisSection({ data }: { data: any }) {
             ]}
             layout={{
               title: "Cumulative Hedge Leakage from Basis ($)",
+              xaxis: { title: "Date" },
               yaxis: { title: "Leakage ($)" },
             }}
           />
@@ -1508,6 +1514,7 @@ function HedgeSection({ data }: { data: any }) {
             ]}
             layout={{
               title: `Hedged vs Unhedged P&L (${(mp.hedge_ratio * 100).toFixed(0)}% ratio, ${mp.rebalance_hours}h rebalance)`,
+              xaxis: { title: "Date" },
               yaxis: { title: "Cumulative P&L ($)" },
               showlegend: true,
               legend: { x: 0, y: 1.15, orientation: "h" },
@@ -1656,6 +1663,7 @@ function DashboardSection({ data }: { data: any }) {
             ]}
             layout={{
               title: "Annual Revenue Model ($)",
+              xaxis: { title: "Revenue Component" },
               yaxis: { title: "USD / year" },
             }}
           />
@@ -1688,7 +1696,7 @@ function DashboardSection({ data }: { data: any }) {
               layout={{
                 title: `P&L Attribution — Annualized (Net: ${fmtUSD(data.pnl_attribution.net_pnl_annualized)}/yr)`,
                 yaxis: { title: "USD / year" },
-                xaxis: { tickangle: -20 },
+                xaxis: { title: "P&L Source", tickangle: -20 },
               }}
             />
           </div>

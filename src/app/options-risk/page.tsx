@@ -1086,7 +1086,7 @@ function GreeksOverviewSection({ data }: { data: any }) {
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.call_delta), type: "scatter", mode: "lines+markers", name: "Call Δ", line: { width: 2, color: BLUE }, marker: { size: 6 } },
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.put_delta), type: "scatter", mode: "lines+markers", name: "Put Δ", line: { width: 2, color: RED }, marker: { size: 6 } },
             ]}
-            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Delta vs Maturity", yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Delta" } }}
+            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Delta vs Maturity", xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: "Maturity" }, yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Delta" } }}
           />
         </div>
         <div className="card" style={{ height: 360 }}>
@@ -1094,7 +1094,7 @@ function GreeksOverviewSection({ data }: { data: any }) {
             data={[
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.vega), type: "bar", name: "Vega ($/1pp)", marker: { color: GREEN } },
             ]}
-            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Vega vs Maturity ($/1pp vol)", yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Vega ($)" } }}
+            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Vega vs Maturity ($/1pp vol)", xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: "Maturity" }, yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Vega ($)" } }}
           />
         </div>
       </div>
@@ -1105,7 +1105,7 @@ function GreeksOverviewSection({ data }: { data: any }) {
             data={[
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.gamma_pct), type: "scatter", mode: "lines+markers", name: "Γ%", line: { width: 2, color: ACCENT_HEX }, marker: { size: 6 } },
             ]}
-            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Gamma (Δ change per 1% spot) vs Maturity", yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Gamma %" } }}
+            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Gamma (Δ change per 1% spot) vs Maturity", xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: "Maturity" }, yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Gamma %" } }}
           />
         </div>
         <div className="card" style={{ height: 360 }}>
@@ -1114,7 +1114,7 @@ function GreeksOverviewSection({ data }: { data: any }) {
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.call_theta), type: "bar", name: "Call Θ", marker: { color: RED } },
               { x: atm.map((r: any) => r.maturity), y: atm.map((r: any) => r.put_theta), type: "bar", name: "Put Θ", marker: { color: "#f59e0b" } },
             ]}
-            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Theta ($/day) vs Maturity", yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Theta ($/day)" }, barmode: "group" }}
+            layout={{ ...PLOT_LAYOUT_BASE, title: "ATM Theta ($/day) vs Maturity", xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: "Maturity" }, yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Theta ($/day)" }, barmode: "group" }}
           />
         </div>
       </div>
@@ -1569,6 +1569,7 @@ function HedgingStrategiesSection({ data }: { data: any }) {
             ...PLOT_LAYOUT_BASE,
             title: "Portfolio Greeks Before & After Each Hedging Strategy",
             barmode: "group",
+            xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: "Strategy" },
             yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Scaled Greek Value", zeroline: true, zerolinecolor: "rgba(255,255,255,0.3)" },
             shapes: [{ type: "line", y0: 0, y1: 0, x0: -0.5, x1: 3.5, line: { color: "rgba(255,255,255,0.3)", width: 1, dash: "dash" } }],
             annotations: [{ x: 3, y: 0, text: "Target: 0", showarrow: false, font: { size: 9, color: "#94a3b8" }, yshift: 12 }],
@@ -1675,7 +1676,7 @@ function HedgeEngineSection({ data }: { data: any }) {
             layout={{
               ...PLOT_LAYOUT_BASE,
               title: "Cumulative Exposure (Before Hedging) as Trades Arrive",
-              xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -45 },
+              xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -45, title: "Trade" },
               yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Scaled Greek" },
               shapes: [{ type: "line", y0: 0, y1: 0, x0: tradeIds[0], x1: tradeIds[tradeIds.length - 1], line: { color: "rgba(255,255,255,0.2)", width: 1, dash: "dash" } }],
             }}
@@ -1692,7 +1693,7 @@ function HedgeEngineSection({ data }: { data: any }) {
               ...PLOT_LAYOUT_BASE,
               title: "Hedge Prescription After Each Trade",
               barmode: "group",
-              xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -45 },
+              xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -45, title: "Trade" },
               yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "Quantity (contracts / BTC)" },
             }}
           />
@@ -2004,7 +2005,7 @@ function StressTestsSection({ data }: { data: any }) {
           layout={{
             ...PLOT_LAYOUT_BASE,
             title: "Stress Test P&L by Scenario",
-            xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -30 },
+            xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -30, title: "Scenario" },
             yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: "P&L ($)" },
           }}
         />

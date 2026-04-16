@@ -279,7 +279,8 @@ function OverviewSection({ data }: { data: any }) {
           { x: ["Delta"], y: [og.delta], type: "bar", name: "Options Δ", marker: { color: PURPLE } },
         ]}
         layout={{ ...PLOT_LAYOUT_BASE, title: { text: t("Delta Decomposition: Perps vs Options"), font: { size: 12 } },
-          barmode: "stack", height: 250 }}
+          barmode: "stack", height: 250,
+          yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "Delta (BTC)" } } }}
       />
 
       <InsightBox>
@@ -425,6 +426,7 @@ function HedgeEngineSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("Cumulative Greek Exposure as Trades Arrive"), font: { size: 12 } },
           height: 300,
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "Trade #" } },
           yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "Delta / Gamma" } },
           yaxis2: { overlaying: "y", side: "right", gridcolor: GRID_COLOR, title: { text: "Vega ($)" } },
         }}
@@ -561,6 +563,7 @@ function NettingSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("VaR 99% — Separate vs Combined"), font: { size: 12 } },
           height: 280,
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "Component" } },
           yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "VaR ($)" } },
           showlegend: false,
         }}
@@ -615,6 +618,7 @@ function DynamicSimSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("BTC Price & Cumulative P&L by Strategy"), font: { size: 12 } },
           height: 350,
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "Day" } },
           yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "P&L ($)" } },
           yaxis2: { overlaying: "y", side: "right", gridcolor: "transparent", title: { text: "BTC ($)" } },
         }}
@@ -646,6 +650,7 @@ function DynamicSimSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("Residual Greeks — DGV-Neutral Strategy"), font: { size: 12 } },
           height: 280,
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "Day" } },
           yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "Δ / Γ" } },
           yaxis2: { overlaying: "y", side: "right", gridcolor: "transparent", title: { text: "Vega ($)" } },
         }}
@@ -672,6 +677,7 @@ function DynamicSimSection({ data }: { data: any }) {
               ...PLOT_LAYOUT_BASE,
               title: { text: t("Cumulative P&L Attribution (Book)"), font: { size: 12 } },
               height: 300,
+              xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "Day" } },
               yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "P&L ($)" } },
             }}
           />
@@ -757,7 +763,7 @@ function StressTestsSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("Stress P&L Decomposition: Perps vs Options"), font: { size: 12 } },
           barmode: "relative", height: 320,
-          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -30 },
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, tickangle: -30, title: { text: "Scenario" } },
           yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "P&L ($)" } },
         }}
       />
@@ -777,6 +783,8 @@ function StressTestsSection({ data }: { data: any }) {
           ...PLOT_LAYOUT_BASE,
           title: { text: t("1-Day P&L Distribution (MC 10K paths)"), font: { size: 12 } },
           height: 300,
+          xaxis: { ...PLOT_LAYOUT_BASE.xaxis, title: { text: "P&L ($)" } },
+          yaxis: { ...PLOT_LAYOUT_BASE.yaxis, title: { text: "Frequency" } },
           shapes: [
             { type: "line", x0: v.var_95, x1: v.var_95, y0: 0, y1: 1, yref: "paper", line: { color: ORANGE, dash: "dash", width: 1.5 } },
             { type: "line", x0: v.var_99, x1: v.var_99, y0: 0, y1: 1, yref: "paper", line: { color: ACCENT_HEX, dash: "dash", width: 1.5 } },

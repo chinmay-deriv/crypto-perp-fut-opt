@@ -143,7 +143,8 @@ function OverviewSection({ data }: { data: any }) {
             { x: data.timestamps, y: data.volume, type: "bar", marker: { color: "rgba(249,115,22,0.3)" }, name: "Volume", yaxis: "y2" },
           ]}
           layout={{
-            title: "BTCUSDT Price & Volume (Hourly)", yaxis: { title: "Price ($)", side: "left" },
+            title: "BTCUSDT Price & Volume (Hourly)", xaxis: { title: "Date" },
+            yaxis: { title: "Price ($)", side: "left" },
             yaxis2: { title: "Volume (BTC)", overlaying: "y", side: "right" }, showlegend: true,
           }}
         />
@@ -188,7 +189,7 @@ function ReturnsSection({ data }: { data: any }) {
                 y: [qq.intercept + qq.slope * qq.theoretical[0], qq.intercept + qq.slope * qq.theoretical[qq.theoretical.length - 1]],
                 type: "scatter", mode: "lines", line: { color: "#ef4444", width: 2, dash: "dash" }, name: "Reference" },
             ]}
-            layout={{ title: "QQ Plot — Tail Deviation from Normal", xaxis: { title: "Theoretical" }, yaxis: { title: "Sample" }, showlegend: true }}
+            layout={{ title: "QQ Plot — Tail Deviation from Normal", xaxis: { title: "Theoretical Quantiles" }, yaxis: { title: "Sample Quantiles" }, showlegend: true }}
           />
         </div>
       </div>
@@ -219,7 +220,7 @@ function VwapSection({ data }: { data: any }) {
             { x: data.sample_timestamps, y: data.sample_close, type: "scatter", mode: "lines", line: { width: 1, color: "#3b82f6" }, name: "Close" },
             { x: data.sample_timestamps, y: data.sample_vwap, type: "scatter", mode: "lines", line: { width: 2, color: "#ef4444" }, name: "VWAP" },
           ]}
-          layout={{ title: `VWAP vs Close — ${data.sample_date}`, yaxis: { title: "Price ($)" }, showlegend: true }}
+          layout={{ title: `VWAP vs Close — ${data.sample_date}`, xaxis: { title: "Time" }, yaxis: { title: "Price ($)" }, showlegend: true }}
         />
       </div>
     </section>
@@ -279,7 +280,8 @@ function RvolSection({ data }: { data: any }) {
             { x: data.dates, y: data.rvol_park, type: "scatter", mode: "lines", line: { width: 1.5, color: "#f59e0b", dash: "dash" }, name: "Parkinson Vol", yaxis: "y2" },
           ]}
           layout={{
-            title: "Price & 30-Day Realized Volatility", yaxis: { title: "Price ($)", side: "left" },
+            title: "Price & 30-Day Realized Volatility", xaxis: { title: "Date" },
+            yaxis: { title: "Price ($)", side: "left" },
             yaxis2: { title: "Ann. Vol (%)", overlaying: "y", side: "right" }, showlegend: true,
           }}
         />
@@ -342,7 +344,7 @@ function VolProfileSection({ data }: { data: any }) {
             { x: data.daily_dates, y: data.daily_close, type: "scatter", mode: "lines", line: { width: 1, color: "#3b82f6" }, name: "Daily Close" },
           ]}
           layout={{
-            title: "Price Action + Value Area", yaxis: { title: "Price ($)" },
+            title: "Price Action + Value Area", xaxis: { title: "Date" }, yaxis: { title: "Price ($)" },
             shapes: [
               { type: "rect", x0: 0, x1: 1, xref: "paper", y0: data.va_low, y1: data.va_high, fillcolor: "rgba(16,185,129,0.1)", line: { width: 0 } },
               { type: "line", x0: 0, x1: 1, xref: "paper", y0: data.poc, y1: data.poc, line: { color: "#ef4444", dash: "dash", width: 1.5 } },
@@ -376,7 +378,7 @@ function FundingSection({ data }: { data: any }) {
         <PlotlyChart
           data={[{ x: data.timestamps, y: data.funding_rate_pct, type: "bar",
             marker: { color: data.funding_rate_pct.map((v: number) => v >= 0 ? "#10b981" : "#ef4444"), opacity: 0.7 } }]}
-          layout={{ title: "8h Funding Rate (green = longs pay, red = shorts pay)", yaxis: { title: "Funding (%)" },
+          layout={{ title: "8h Funding Rate (green = longs pay, red = shorts pay)", xaxis: { title: "Date" }, yaxis: { title: "Funding (%)" },
             shapes: [{ type: "line", x0: 0, x1: 1, xref: "paper", y0: 0, y1: 0, line: { color: "white", width: 0.5 } }] }}
         />
       </div>
@@ -384,7 +386,7 @@ function FundingSection({ data }: { data: any }) {
         <PlotlyChart
           data={[{ x: data.timestamps, y: data.cumulative_funding_pct, type: "scatter", mode: "lines",
             line: { width: 2, color: "#8b5cf6" }, fill: "tozeroy", fillcolor: "rgba(139,92,246,0.1)" }]}
-          layout={{ title: "Cumulative Funding (basis trade P&L)", yaxis: { title: "Cumulative (%)" } }}
+          layout={{ title: "Cumulative Funding (basis trade P&L)", xaxis: { title: "Date" }, yaxis: { title: "Cumulative (%)" } }}
         />
       </div>
       <div className="card mt-4 border-l-4 border-l-[var(--accent-purple)]">
@@ -415,14 +417,14 @@ function MarkPriceSection({ data }: { data: any }) {
             { x: data.sample_timestamps, y: data.sample_mark, type: "scatter", mode: "lines", line: { width: 2, color: "#ef4444" }, name: "Mark Price" },
             { x: data.sample_timestamps, y: data.sample_vwap, type: "scatter", mode: "lines", line: { width: 1, color: "#10b981", dash: "dash" }, name: "VWAP" },
           ]}
-          layout={{ title: `Mark vs Last vs VWAP — ${data.sample_date}`, yaxis: { title: "Price ($)" }, showlegend: true }}
+          layout={{ title: `Mark vs Last vs VWAP — ${data.sample_date}`, xaxis: { title: "Time" }, yaxis: { title: "Price ($)" }, showlegend: true }}
         />
       </div>
       <div className="card" style={{ height: 300 }}>
         <PlotlyChart
           data={[{ x: data.sample_timestamps, y: data.sample_dev_bps, type: "scatter", mode: "lines",
             fill: "tozeroy", line: { width: 1, color: "#3b82f6" }, fillcolor: "rgba(59,130,246,0.15)" }]}
-          layout={{ title: "Close − Mark Price (bps)", yaxis: { title: "Deviation (bps)" },
+          layout={{ title: "Close − Mark Price (bps)", xaxis: { title: "Time" }, yaxis: { title: "Deviation (bps)" },
             shapes: [{ type: "line", x0: 0, x1: 1, xref: "paper", y0: 0, y1: 0, line: { color: "white", width: 0.5, dash: "dash" } }] }}
         />
       </div>
@@ -466,7 +468,7 @@ function RiskSection({ data }: { data: any }) {
           <PlotlyChart
             data={[{ x: data.drawdown.dates, y: data.drawdown.values, type: "scatter", mode: "lines",
               fill: "tozeroy", line: { width: 1, color: "#ef4444" }, fillcolor: "rgba(239,68,68,0.3)" }]}
-            layout={{ title: `Drawdown from Peak (max: ${data.drawdown.max_dd_pct.toFixed(2)}%)`, yaxis: { title: "Drawdown (%)" } }}
+            layout={{ title: `Drawdown from Peak (max: ${data.drawdown.max_dd_pct.toFixed(2)}%)`, xaxis: { title: "Date" }, yaxis: { title: "Drawdown (%)" } }}
           />
         </div>
       </div>
@@ -475,7 +477,7 @@ function RiskSection({ data }: { data: any }) {
           <PlotlyChart
             data={[{ x: data.rolling_var.dates, y: data.rolling_var.values, type: "scatter", mode: "lines",
               fill: "tozeroy", line: { width: 1.5, color: "#ef4444" }, fillcolor: "rgba(239,68,68,0.15)" }]}
-            layout={{ title: "Rolling 30-Day VaR (99%)", yaxis: { title: "VaR (%)" } }}
+            layout={{ title: "Rolling 30-Day VaR (99%)", xaxis: { title: "Date" }, yaxis: { title: "VaR (%)" } }}
           />
         </div>
         <div className="card" style={{ height: 350 }}>
