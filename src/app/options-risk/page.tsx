@@ -18,8 +18,8 @@ const SECTIONS: { id: string; label: string }[] = [
   { id: "portfolio", label: "7. Portfolio Aggregation" },
   { id: "hedging-strategies", label: "8. Hedging Strategies" },
   { id: "hedge-engine", label: "9. Live Hedge Engine" },
-  { id: "dynamic-hedging", label: "10. Dynamic Hedging" },
-  { id: "stress-tests", label: "11. Stress Tests & VaR" },
+  /* { id: "dynamic-hedging", label: "10. Dynamic Hedging" }, */
+  /* { id: "stress-tests", label: "11. Stress Tests & VaR" }, */
 ];
 
 async function fetchJSON<T>(path: string): Promise<T | null> {
@@ -120,7 +120,7 @@ export default function OptionsRisk() {
         <div className="mt-auto pt-4 border-t border-[var(--card-border)]">
           <p className="text-[10px] text-[var(--muted)]">Options Risk Module</p>
           <p className="text-[10px] text-[var(--muted)]">
-            Sections 1–11 · Pricing, Greeks, Hedging
+            Sections 1–9 · Pricing, Greeks, Hedging
           </p>
         </div>
       </nav>
@@ -162,8 +162,8 @@ export default function OptionsRisk() {
         <PortfolioSection data={d.portfolio} />
         <HedgingStrategiesSection data={d.portfolio} />
         <HedgeEngineSection data={d.hedge_rebalance} />
-        <DynamicHedgingSection data={d.dynamic_hedging} />
-        <StressTestsSection data={d.stress_tests} />
+        {/* <DynamicHedgingSection data={d.dynamic_hedging} /> */}
+        {/* <StressTestsSection data={d.stress_tests} /> */}
 
         <footer className="mt-12 pt-6 border-t border-[var(--card-border)] text-center text-xs text-[var(--muted)]">
           <p>{t("Options Risk Management Research · Built with Next.js, Plotly.js, Python")}</p>
