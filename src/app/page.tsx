@@ -119,7 +119,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
-                  {t("Comprehensive perpetual contract analysis covering fair pricing (VWAP, mark price), order flow, funding rates, liquidation cascades, VaR/CVaR, margin calibration, and intraday seasonality.")}
+                  {t("Comprehensive perpetual contract analysis covering fair pricing (VWAP, mark price), order flow, funding rates, realized volatility, liquidation cascades, and VaR/CVaR risk metrics.")}
                 </p>
 
                 <div className="grid grid-cols-1 gap-2 mb-6">
@@ -127,8 +127,8 @@ export default function Home() {
                     t("Fair price construction (VWAP, Mark Price)"),
                     t("Order flow imbalance & predictive signal"),
                     t("Funding rate simulation & basis trade P&L"),
-                    t("VaR, CVaR, max drawdown risk metrics"),
-                    t("Liquidation cascade & margin tier calibration"),
+                    t("VaR, CVaR & maximum drawdown metrics"),
+                    t("Liquidation cascade simulation"),
                   ].map((f, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
                       <span className="w-1 h-1 rounded-full bg-[#10b981] flex-shrink-0" />
@@ -202,16 +202,16 @@ export default function Home() {
                 </div>
 
                 <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
-                  {t("Quantifying and hedging the exchange's risk from selling vanilla options — Greeks exposure, volatility surface risk, gamma hedging, and portfolio-level risk aggregation.")}
+                  {t("Quantifying and hedging the exchange's risk from selling vanilla options — pricing engine validation, Greeks exposure, portfolio aggregation, and live hedge engine with trade-by-trade rebalancing.")}
                 </p>
 
                 <div className="grid grid-cols-1 gap-2 mb-6">
                   {[
+                    t("Multi-model pricing engine (BS, Bates)"),
                     t("Greeks exposure (Delta, Gamma, Vega, Theta)"),
-                    t("Dynamic delta & gamma hedging"),
-                    t("Volatility surface & smile risk"),
+                    t("Δ+Γ+V-neutral hedging strategies"),
                     t("Portfolio-level risk aggregation"),
-                    t("Hedging P&L attribution"),
+                    t("Live hedge engine with P&L attribution"),
                   ].map((f, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
                       <span className="w-1 h-1 rounded-full bg-[#a855f7] flex-shrink-0" />
@@ -243,15 +243,15 @@ export default function Home() {
                 </div>
 
                 <p className="text-sm text-[var(--muted-light)] mb-5 leading-relaxed">
-                  {t("Combined risk management for perpetual futures and vanilla options — unified Greek exposure, cross-product netting, single hedge engine, and integrated stress testing.")}
+                  {t("Combined risk management for perpetual futures and vanilla options — unified Greek exposure across the full derivatives book, real-time risk dashboard, and a single hedge engine.")}
                 </p>
 
                 <div className="grid grid-cols-1 gap-2 mb-6">
                   {[
                     t("Unified Greeks across perps + options"),
-                    t("Cross-product Delta netting"),
+                    t("Real-time risk dashboard & metrics"),
                     t("Single DGV-neutral hedge engine"),
-                    t("Combined stress tests & VaR"),
+                    t("Trade-by-trade hedge rebalancing"),
                     t("Per-product P&L decomposition"),
                   ].map((f, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-xs text-[var(--foreground)]">
