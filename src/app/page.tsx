@@ -61,7 +61,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Options Card */}
             <Link href="/options" className="group block">
               <div className="card-interactive h-full relative overflow-hidden">
@@ -144,7 +144,7 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Risk Management Card */}
+            {/* Risk Management Card — hidden, page still accessible via direct URL
             <Link href="/risk-management" className="group block">
               <div className="card-interactive h-full relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, #f59e0b, #fbbf24, transparent)" }} />
@@ -184,6 +184,7 @@ export default function Home() {
                 </div>
               </div>
             </Link>
+            */}
 
             {/* Options Risk Card */}
             <Link href="/options-risk" className="group block">
