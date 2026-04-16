@@ -10,9 +10,9 @@ const SECTIONS: { id: string; label: string }[] = [
   { id: "overview", label: "1. Unified Portfolio" },
   { id: "risk-dashboard", label: "2. Risk Dashboard" },
   { id: "hedge-engine", label: "3. Unified Hedge Engine" },
-  { id: "netting", label: "4. Cross-Product Netting" },
-  { id: "dynamic-sim", label: "5. Dynamic Simulation" },
-  { id: "stress-tests", label: "6. Stress Tests & VaR" },
+  /* { id: "netting", label: "4. Cross-Product Netting" }, */
+  /* { id: "dynamic-sim", label: "5. Dynamic Simulation" }, */
+  /* { id: "stress-tests", label: "6. Stress Tests & VaR" }, */
 ];
 
 async function fetchJSON<T>(path: string): Promise<T | null> {
@@ -93,7 +93,7 @@ export default function UnifiedRisk() {
         </div>
         <div className="mt-auto pt-4 border-t border-[var(--card-border)]">
           <p className="text-[10px] text-[var(--muted)]">Unified Risk Engine</p>
-          <p className="text-[10px] text-[var(--muted)]">Sections 1–6 · Perps + Options</p>
+          <p className="text-[10px] text-[var(--muted)]">Sections 1–3 · Perps + Options</p>
         </div>
       </nav>
 
@@ -123,9 +123,9 @@ export default function UnifiedRisk() {
         <OverviewSection data={d.portfolio} />
         <RiskDashboardSection data={d.portfolio} />
         <HedgeEngineSection data={d.hedge_rebalance} />
-        <NettingSection data={d.netting_benefit} />
-        <DynamicSimSection data={d.dynamic_sim} />
-        <StressTestsSection data={d.stress_tests} />
+        {/* <NettingSection data={d.netting_benefit} /> */}
+        {/* <DynamicSimSection data={d.dynamic_sim} /> */}
+        {/* <StressTestsSection data={d.stress_tests} /> */}
 
         <footer className="mt-12 pt-6 border-t border-[var(--card-border)] text-center text-xs text-[var(--muted)]">
           <p>{t("Unified Risk Engine · Built with Next.js, Plotly.js, Python")}</p>
