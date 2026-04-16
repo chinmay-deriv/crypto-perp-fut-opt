@@ -11,15 +11,15 @@ const SECTIONS: { id: string; label: string }[] = [
   { id: "cross-validation", label: "2. Cross-Validation" },
   { id: "model-selection", label: "3. Model Selection" },
   { id: "pricing-surface", label: "4. Pricing Surface" },
-  { id: "parity-check", label: "5. Put-Call Parity" },
-  { id: "greeks-overview", label: "6. Greeks Calculator" },
-  { id: "greeks-heatmaps", label: "7. Greeks Heatmaps" },
-  { id: "smile-risk", label: "8. Smile-Risk Greeks" },
-  { id: "portfolio", label: "9. Portfolio Aggregation" },
-  { id: "hedging-strategies", label: "10. Hedging Strategies" },
-  { id: "hedge-engine", label: "11. Live Hedge Engine" },
-  { id: "dynamic-hedging", label: "12. Dynamic Hedging" },
-  { id: "stress-tests", label: "13. Stress Tests & VaR" },
+  /* { id: "parity-check", label: "5. Put-Call Parity" }, */
+  { id: "greeks-overview", label: "5. Greeks Calculator" },
+  { id: "greeks-heatmaps", label: "6. Greeks vs Moneyness" },
+  { id: "smile-risk", label: "7. Smile-Risk Greeks" },
+  { id: "portfolio", label: "8. Portfolio Aggregation" },
+  { id: "hedging-strategies", label: "9. Hedging Strategies" },
+  { id: "hedge-engine", label: "10. Live Hedge Engine" },
+  { id: "dynamic-hedging", label: "11. Dynamic Hedging" },
+  { id: "stress-tests", label: "12. Stress Tests & VaR" },
 ];
 
 async function fetchJSON<T>(path: string): Promise<T | null> {
@@ -120,7 +120,7 @@ export default function OptionsRisk() {
         <div className="mt-auto pt-4 border-t border-[var(--card-border)]">
           <p className="text-[10px] text-[var(--muted)]">Options Risk Module</p>
           <p className="text-[10px] text-[var(--muted)]">
-            Sections 1–13 · Pricing, Greeks, Hedging
+            Sections 1–12 · Pricing, Greeks, Hedging
           </p>
         </div>
       </nav>
@@ -155,7 +155,7 @@ export default function OptionsRisk() {
         <CrossValidationSection data={d.cross_validation} />
         <ModelSelectionSection data={d.model_selection} />
         <PricingSurfaceSection data={d.pricing_surface} />
-        <ParityCheckSection data={d.parity_check} />
+        {/* <ParityCheckSection data={d.parity_check} /> */}
         <GreeksOverviewSection data={d.greeks_surface} />
         <GreeksHeatmapSection data={d.greeks_surface} />
         <SmileRiskSection data={d.smile_risk} />
@@ -1003,7 +1003,7 @@ function GreeksOverviewSection({ data }: { data: any }) {
           PHASE 2
         </span>
       </div>
-      <STitle>{t("6. Greeks Calculator")}</STitle>
+      <STitle>{t("5. Greeks Calculator")}</STitle>
 
       <InfoBox title="Why Greeks Matter for the Exchange">
         <p className="mb-2">
@@ -1157,8 +1157,9 @@ function GreeksHeatmapSection({ data }: { data: any }) {
 
   return (
     <section id="greeks-heatmaps" className="mb-12">
-      <STitle>{t("7. Greeks Heatmaps (Moneyness × Maturity)")}</STitle>
+      <STitle>{t("6. Greeks vs Moneyness (by Maturity)")}</STitle>
 
+      {/* Heatmaps — commented out, line charts kept
       <InfoBox title="Reading the Heatmaps">
         <p className="mb-2">
           {t("Each heatmap shows one Greek as a function of moneyness (x-axis, K/S from 0.90 to 1.10) and maturity (y-axis, from 1hr to 30 days). Bright/dark colours indicate large absolute values. These surfaces are what a trading desk monitors in real time — any unexpected shift signals a risk regime change.")}
@@ -1207,6 +1208,7 @@ function GreeksHeatmapSection({ data }: { data: any }) {
           }}
         />
       </div>
+      */}
 
       {/* Greek profiles at selected maturity */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
@@ -1266,7 +1268,7 @@ function GreeksHeatmapSection({ data }: { data: any }) {
       </div>
 
       <InsightBox>
-        {t("The heatmaps reveal the 'risk topology' of the options book. Gamma peaks sharply at ATM for short maturities — this is where your hedging error is largest (the delta changes fastest). Vega is concentrated in longer-dated ATM options — this is where a vol spike hurts most. Vanna is antisymmetric around ATM (positive on one side, negative on the other) — this means a vol move shifts your entire delta profile. Volga is positive at the wings — deep OTM options become more expensive in high-vol regimes.")}
+        {t("These profiles reveal the 'risk topology' of the options book. Gamma peaks sharply at ATM for short maturities — this is where your hedging error is largest (the delta changes fastest). Vega is concentrated in longer-dated ATM options — this is where a vol spike hurts most. Vanna is antisymmetric around ATM (positive on one side, negative on the other) — this means a vol move shifts your entire delta profile. Volga is positive at the wings — deep OTM options become more expensive in high-vol regimes.")}
       </InsightBox>
     </section>
   );
@@ -1291,7 +1293,7 @@ function SmileRiskSection({ data }: { data: any }) {
 
   return (
     <section id="smile-risk" className="mb-12">
-      <STitle>{t("8. Smile-Risk Greeks (IV Surface Sensitivity)")}</STitle>
+      <STitle>{t("7. Smile-Risk Greeks (IV Surface Sensitivity)")}</STitle>
 
       <InfoBox title="Why Smile Risk Is Critical in Crypto">
         <p className="mb-2">
@@ -1420,7 +1422,7 @@ function PortfolioSection({ data }: { data: any }) {
 
   return (
     <section id="portfolio" className="mb-12">
-      <STitle>{t("9. Portfolio Aggregation & Hedging")}</STitle>
+      <STitle>{t("8. Portfolio Aggregation & Hedging")}</STitle>
 
       <InfoBox title="From Single-Option Greeks to Portfolio Risk">
         <p className="mb-2">
@@ -1538,7 +1540,7 @@ function HedgingStrategiesSection({ data }: { data: any }) {
 
   return (
     <section id="hedging-strategies" className="mb-12">
-      <STitle>{t("10. Hedging Strategies — Making Δ, Γ, V → 0")}</STitle>
+      <STitle>{t("9. Hedging Strategies — Making Δ, Γ, V → 0")}</STitle>
 
       <InfoBox title="The Three Layers of Option Hedging">
         <p className="mb-2">
@@ -1645,7 +1647,7 @@ function HedgeEngineSection({ data }: { data: any }) {
 
   return (
     <section id="hedge-engine" className="mb-12">
-      <STitle>{t("11. Live Hedge Engine — Trade-by-Trade Rebalancing")}</STitle>
+      <STitle>{t("10. Live Hedge Engine — Trade-by-Trade Rebalancing")}</STitle>
 
       <InfoBox title="How the Hedge Engine Works in Real Time">
         <p className="mb-2">
@@ -1802,7 +1804,7 @@ function DynamicHedgingSection({ data }: { data: any }) {
 
   return (
     <section id="dynamic-hedging" className="mb-12">
-      <STitle>{t("12. Dynamic Hedging Simulation (14 Days)")}</STitle>
+      <STitle>{t("11. Dynamic Hedging Simulation (14 Days)")}</STitle>
 
       <InfoBox title="What This Simulation Shows">
         <p className="mb-2">
@@ -1943,7 +1945,7 @@ function StressTestsSection({ data }: { data: any }) {
 
   return (
     <section id="stress-tests" className="mb-12">
-      <STitle>{t("13. Stress Testing & Value at Risk")}</STitle>
+      <STitle>{t("12. Stress Testing & Value at Risk")}</STitle>
 
       <InfoBox title="Why Stress Test?">
         <p className="mb-2">
